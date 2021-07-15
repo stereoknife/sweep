@@ -1,0 +1,8 @@
+*~
+*.swp
+bin/
+obj/
+.codelite
+sweep.*
+tags
+compile_flags.txt
