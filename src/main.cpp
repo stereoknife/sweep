@@ -1,27 +1,35 @@
 #include "raylib-cpp.hpp"
 
+#include <cstdlib>
+#include <ctime>
+
+#include "board/board.h"
+
 int main(int argc, char** argv) {
-    int screenWidth = 800;
-    int screenHeight = 450;
+    std::srand(std::time(nullptr)); // TODO Better random generation
+    
+    int screenWidth = 1024;
+    int screenHeight = 1024;
+    
+    raylib::Window window(screenWidth, screenHeight, "Minesweep");
 
-    raylib::Window window(screenWidth, screenHeight, "raylib-cpp - basic window");
-    raylib::Texture logo("raylib_logo.png");
-
+    board b{};
+    
+    b.randomize();
+    
     SetTargetFPS(60);
 
-    while (!window.ShouldClose())
-    {
+    while (!window.ShouldClose()) {
+        
+        if (IsKeyPressed(KEY_K)) b.randomize();
+        
+        // Draw 
         BeginDrawing();
 
         window.ClearBackground(RAYWHITE);
 
-        DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
-
-        // Object methods.
-        logo.Draw(
-            screenWidth / 2 - logo.GetWidth() / 2,
-            screenHeight / 2 - logo.GetHeight() / 2);
-
+        b.draw();
+        
         EndDrawing();
     }
 

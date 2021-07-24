@@ -6,3 +6,4 @@ obj/
 sweep.*
 tags
 compile_flags.txt
+*.xcf
