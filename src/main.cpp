@@ -15,13 +15,17 @@ int main(int argc, char** argv) {
 
     board b{};
     
+    b.clean();
     b.randomize();
     
     SetTargetFPS(60);
 
     while (!window.ShouldClose()) {
         
-        if (IsKeyPressed(KEY_K)) b.randomize();
+        if (IsKeyPressed(KEY_K)) {
+            b.clean();
+            b.randomize();
+        }
         
         // Draw 
         BeginDrawing();

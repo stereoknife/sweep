@@ -12,6 +12,7 @@ struct cell {
 
 struct board {
     static constexpr u8 SIZE {10}; // TODO Dynamic size boards and shit
+    static constexpr u8 MINES {15};
     // x * y cells. x is horizontal, y is vertical. Cells are arranged left to right, top to bottom
     raylib::Texture tilemap;
     
@@ -21,6 +22,8 @@ struct board {
     
     cell* get(u8 x, u8 y);
     
+    void clean();
+
     void randomize();
     
     void draw();
