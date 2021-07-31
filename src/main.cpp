@@ -6,6 +6,9 @@
 #include "board/board.h"
 
 int main(int argc, char** argv) {
+    (void) argc;
+    (void) argv;
+    
     std::srand(std::time(nullptr)); // TODO Better random generation
     
     int screenWidth = 1024;
@@ -21,11 +24,8 @@ int main(int argc, char** argv) {
     SetTargetFPS(60);
 
     while (!window.ShouldClose()) {
-        
-        if (IsKeyPressed(KEY_K)) {
-            b.clean();
-            b.randomize();
-        }
+        // Update
+        b.update();
         
         // Draw 
         BeginDrawing();

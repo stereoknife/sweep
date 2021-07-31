@@ -18,3 +18,4 @@ using f64 = double;
 
 using vec2 = raylib::Vector2;
 using vec3 = raylib::Vector3;
+using rect = raylib::Rectangle;
