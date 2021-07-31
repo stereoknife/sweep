@@ -15,11 +15,9 @@ int main(int argc, char** argv) {
     int screenHeight = 1024;
     
     raylib::Window window(screenWidth, screenHeight, "Minesweep");
+    window.SetPosition(GetMonitorPosition(0));
 
-    board b{};
-    
-    b.clean();
-    b.randomize();
+    Board b{};
     
     SetTargetFPS(60);
 
