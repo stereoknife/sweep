@@ -2,8 +2,10 @@
 
 #include <cstdlib>
 #include <ctime>
+#include <character/character.h>
 
 #include "board/board.h"
+#include "game/world.h"
 
 int main(int argc, char** argv) {
     (void) argc;
@@ -18,12 +20,16 @@ int main(int argc, char** argv) {
     window.SetPosition(GetMonitorPosition(0));
 
     Board b{};
+    World world{};
+
+    world.create_object<Character>();
     
     SetTargetFPS(60);
 
     while (!window.ShouldClose()) {
         // Update
         b.update();
+        world.update_all();
         
         // Draw 
         BeginDrawing();
@@ -31,6 +37,7 @@ int main(int argc, char** argv) {
         window.ClearBackground(RAYWHITE);
 
         b.draw();
+        world.draw_all();
         
         EndDrawing();
     }

@@ -40,12 +40,12 @@ public:
     cell* get(cell_index x, cell_index y);
     cell_index distance(cell_index x1, cell_index y1, cell_index x2, cell_index y2);
     
-private:
     vec2     tile_to_screen(cell_index x, cell_index y);
     vec2     tile_to_screen(cell_pos pos);
     cell_pos screen_to_tile(f32 x, f32 y);
     cell_pos screen_to_tile(vec2 pos);
-    
+
+private:
     void reset();
     void generate(cell_index sx, cell_index sy);
     void reveal(cell_index x, cell_index y, bool user_reveal);
