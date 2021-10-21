@@ -5,16 +5,16 @@
 #include "util/types.h"
 #include <type_traits>
 
-class World {
+class World : Gameobject {
 public:
     World();
     ~World();
 
-    void update_all();
-    void draw_all();
-    void annihilate();
+    virtual void update();
+    virtual void draw();
     u32 register_object(Gameobject* go);
     void delete_object(int index);
+    void annihilate();
 
     // You hate to see it
     template<typename T>

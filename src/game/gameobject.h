@@ -5,9 +5,9 @@
 
 class Gameobject : public Drawable {
 public:
-    virtual void draw() = 0;
+    void draw() override = 0;
     virtual void update() = 0;
-    virtual ~Gameobject() {};
+    virtual ~Gameobject() = default;
 
 protected:
     static Gameobject* null;

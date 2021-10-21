@@ -1,7 +1,3 @@
-//
-// Created by kam on 10/12/21.
-//
-
 #include "world.h"
 #include "util/types.h"
 
@@ -10,21 +6,15 @@ World::~World() {
     annihilate();
 }
 
-void World::annihilate() {
-    for (int i = 0; i < game_objects.size(); ++i) {
-        delete game_objects[i];
+void World::update() {
+    for (u32 i = 0; i < game_objects.size(); ++i) {
+        if (game_objects[i]) game_objects[i]->update();
     }
 }
 
-void World::update_all() {
+void World::draw() {
     for (u32 i = 0; i < game_objects.size(); ++i) {
-        game_objects[i]->update();
-    }
-}
-
-void World::draw_all() {
-    for (u32 i = 0; i < game_objects.size(); ++i) {
-        game_objects[i]->draw();
+        if (game_objects[i]) game_objects[i]->draw();
     }
 }
 
@@ -40,6 +30,12 @@ u32 World::register_object(Gameobject* go) {
     }
 }
 
-void World::delete_object(int index) {
+void World::delete_object(u32 index) {
 
+}
+
+void World::annihilate() {
+    for (int i = 0; i < game_objects.size(); ++i) {
+        delete game_objects[i];
+    }
 }

@@ -29,7 +29,7 @@ int main(int argc, char** argv) {
     while (!window.ShouldClose()) {
         // Update
         b.update();
-        world.update_all();
+        world.update();
         
         // Draw 
         BeginDrawing();
@@ -37,7 +37,7 @@ int main(int argc, char** argv) {
         window.ClearBackground(RAYWHITE);
 
         b.draw();
-        world.draw_all();
+        world.draw();
         
         EndDrawing();
     }
