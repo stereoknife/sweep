@@ -13,7 +13,7 @@ public:
     virtual void update();
     virtual void draw();
     u32 register_object(Gameobject* go);
-    void delete_object(int index);
+    void delete_object(u32 index);
     void annihilate();
 
     // You hate to see it

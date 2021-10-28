@@ -35,7 +35,7 @@ void World::delete_object(u32 index) {
 }
 
 void World::annihilate() {
-    for (int i = 0; i < game_objects.size(); ++i) {
+    for (u32 i = 0; i < game_objects.size(); ++i) {
         delete game_objects[i];
     }
 }
