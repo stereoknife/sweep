@@ -49,7 +49,6 @@ $(target): $(obj)
 $(OBJDIR)/%.o: %.cpp
 	@mkdir -p $(OBJDIR)
 	@echo [$(CXX)] $^
-	@echo $(dir $@)
 	@mkdir -p $(dir $@)
 	@$(CXX) $(CXXFLAGS) -c $^ -o $@
 
