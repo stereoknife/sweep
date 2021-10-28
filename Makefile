@@ -2,8 +2,14 @@ PROJDIR::=$(shell pwd)
 OBJDIR::=$(PROJDIR)/obj
 OUTDIR::=$(PROJDIR)/bin
 RAYLIBDIR::=$(PROJDIR)/vendor/raylib-cpp/include
+UNAME_S := $(shell uname -s)
 
 INCLUDEDIRS::=$(PROJDIR)/src $(RAYLIBDIR)
+
+ifeq ($(UNAME_S),Darwin)
+	INCLUDEDIRS+= /opt/homebrew/Cellar/raylib/3.7.0/include
+	LDFLAGS=-L/opt/homebrew/Cellar/raylib/3.7.0/lib
+endif
 
 target::=$(OUTDIR)/sweep
 
@@ -15,7 +21,7 @@ CXXDEBUGFLAGS::=-g -O0 -DDEBUG
 CXXRELEASEFLAGS::=-O2
 
 
-folders::=$(sort $(dir $(shell find src/)))
+folders::=$(sort $(dir $(shell find src)))
 cpp::=$(foreach var,$(folders),$(wildcard $(var)*.cpp))
 obj::=$(patsubst %,$(OBJDIR)/%,$(cpp:.cpp=.o))
 
@@ -43,6 +49,7 @@ $(target): $(obj)
 $(OBJDIR)/%.o: %.cpp
 	@mkdir -p $(OBJDIR)
 	@echo [$(CXX)] $^
+	@echo $(dir $@)
 	@mkdir -p $(dir $@)
 	@$(CXX) $(CXXFLAGS) -c $^ -o $@
 
